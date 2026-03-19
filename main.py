@@ -16,25 +16,28 @@ def main():
         
         print_menu()
 
-        choice = input("Elige una opción: ")
+        try:
+            choice = input("Elige una opción: ")
 
-        match choice: 
-            case "1":
-                description = input("Descripción de la tarea: ")
-                manager.add_task(description)
-            case "2":
-                manager.list_tasks()
-            case "3":
-                id = int(input("ID de la tarea a completar: "))
-                manager.complete_task(id)
-            case "4":
-                id = int(input("ID de la tarea a eliminar: "))
-                manager.delete_task(id)
-            case "5":
-                print("Saliendo...")
-                break
-            case _:
-                print("Opción no válida. Selecciona otra.")
+            match choice: 
+                case "1":
+                    description = input("Descripción de la tarea: ")
+                    manager.add_task(description)
+                case "2":
+                    manager.list_tasks()
+                case "3":
+                    id = int(input("ID de la tarea a completar: "))
+                    manager.complete_task(id)
+                case "4":
+                    id = int(input("ID de la tarea a eliminar: "))
+                    manager.delete_task(id)
+                case "5":
+                    print("Saliendo...")
+                    break
+                case _:
+                    print("Opción no válida. Selecciona otra.")
+        except ValueError:
+            print("Opción no válida. Selecciona otra.")
 
 if __name__ == "__main__":
     main()
